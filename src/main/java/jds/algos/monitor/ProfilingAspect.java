@@ -1,11 +1,10 @@
-package jds.algos;
+package jds.algos.monitor;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StopWatch;
 
 @Aspect
 @Component
@@ -13,16 +12,17 @@ public class ProfilingAspect {
 
     @Around("methodsToBeProfiled()")
     public Object profile(ProceedingJoinPoint pjp) throws Throwable {
-        StopWatch sw = new StopWatch(getClass().getSimpleName());
+        long start = System.nanoTime();
         try {
-            sw.start(pjp.getSignature().getName());
+            System.out.println(pjp.getSignature().getName());
             return pjp.proceed();
         } finally {
-            sw.stop();
-            System.out.println(sw.prettyPrint());
+            System.out.println(System.nanoTime() - start + " ns");
         }
     }
 
-    @Pointcut("execution(public * jds.algos.*.*(..))")
+
+    @Pointcut("execution(* jds.algos.primes.*.*(..))")
     public void methodsToBeProfiled(){}
+
 }
