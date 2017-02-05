@@ -14,15 +14,17 @@ public class ProfilingAspect {
     public Object profile(ProceedingJoinPoint pjp) throws Throwable {
         long start = System.nanoTime();
         try {
-            System.out.println(pjp.getSignature().getName());
+            System.out.println("<------------------------------------");
+            System.out.println(pjp.getSignature().getName() + " Start");
             return pjp.proceed();
         } finally {
-            System.out.println(System.nanoTime() - start + " ns");
+            System.out.println((System.nanoTime() - start) + " ns");
+            System.out.println("------------------------------------>");
         }
     }
 
 
-    @Pointcut("execution(* jds.algos.primes.*.*(..))")
+    @Pointcut("execution(* jds.algos.*.*.*(..))")
     public void methodsToBeProfiled(){}
 
 }
