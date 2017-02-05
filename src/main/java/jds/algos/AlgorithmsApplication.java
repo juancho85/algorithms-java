@@ -21,7 +21,6 @@ public class AlgorithmsApplication implements CommandLineRunner{
             } else {
                 System.out.printf("The number %d is not prime%n", i);
             }
-
         }
     }
 }
