@@ -2,6 +2,8 @@ package jds.algos.primes;
 
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 @Component
 public class PrimeNumbers {
 
@@ -51,5 +53,31 @@ public class PrimeNumbers {
         }
         System.out.printf("e The number %d is prime%n", number);
         return true;
+    }
+
+    /*The Sieve of Eratosthenes will generate all the primes from 2 to a
+    given number n. It begins by assuming that all numbers are prime.
+    It then takes the first prime number and removes all of its multiples.
+    It then applies the same method to the next prime number.
+    This is continued until all numbers have been processed
+     */
+    public boolean[] isNumberPrimeSieve(int number) {
+        boolean[] prime=new boolean[number+1];
+        Arrays.fill(prime,true);
+        prime[0]=false;
+        prime[1]=false;
+        int limit = (int) Math.ceil(Math.sqrt(number));
+
+        for (int i=2; i<=limit; i++){
+            if (prime[i]){
+                for (int k=i*i; k<=number; k+=i){
+                    if(k == number) {
+                        prime[k]=false;
+                    }
+                }
+            }
+        }
+
+        return prime;
     }
 }

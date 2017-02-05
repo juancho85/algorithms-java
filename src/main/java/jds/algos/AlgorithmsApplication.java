@@ -18,7 +18,8 @@ public class AlgorithmsApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... strings) throws Exception {
-        primeNumbers.isNumberPrimeNaive(100_001);
-        primeNumbers.isNumberPrimeSquareRoot(100_001);
+        primeNumbers.isNumberPrimeNaive(100_001_001);
+        primeNumbers.isNumberPrimeSquareRoot(100_001_001);
+        primeNumbers.isNumberPrimeSieve(100_001_001);
     }
 }
