@@ -1,5 +1,6 @@
 package jds.algos.bfs;
 
+import jds.algos.vertex.Vertex;
 import org.springframework.stereotype.Component;
 
 import java.util.LinkedList;

@@ -1,4 +1,4 @@
-package jds.algos.bfs;
+package jds.algos.vertex;
 
 import java.util.ArrayList;
 import java.util.List;
