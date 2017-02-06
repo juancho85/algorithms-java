@@ -3,6 +3,7 @@ package jds.algos;
 import jds.algos.bfs.BreathFirstSearch;
 import jds.algos.bfs.Vertex;
 import jds.algos.primes.PrimeNumbers;
+import jds.algos.webcrawler.WebCrawler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,14 +18,18 @@ public class AlgorithmsApplication implements CommandLineRunner{
     @Autowired
     BreathFirstSearch bfsAlgo;
 
+    @Autowired
+    WebCrawler crawler;
+
 	public static void main(String[] args) {
 		SpringApplication.run(AlgorithmsApplication.class, args);
 	}
 
 	@Override
 	public void run(String... strings) throws Exception {
-        runPrimeNumbersAlgorithm();
-        runBfsAlgorithm();
+//        runPrimeNumbersAlgorithm();
+//        runBfsAlgorithm();
+        runWebCrawler();
     }
 
     private void runBfsAlgorithm() {
@@ -45,5 +50,10 @@ public class AlgorithmsApplication implements CommandLineRunner{
         primeNumbers.isNumberPrimeNaive(100_001_001);
         primeNumbers.isNumberPrimeSquareRoot(100_001_001);
         primeNumbers.isNumberPrimeSieve(100_001_001);
+    }
+
+    private void runWebCrawler() {
+        String rootUrl = "http://www.bbc.com";
+	    crawler.discoverWeb(rootUrl);
     }
 }
