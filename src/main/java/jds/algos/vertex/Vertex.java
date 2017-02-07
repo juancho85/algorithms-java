@@ -8,22 +8,22 @@ import java.util.List;
  */
 public class Vertex {
 
-    private int data;
+    private String data;
 
     private boolean visited;
 
     private List<Vertex> neighbourList;
 
-    public Vertex(int data) {
+    public Vertex(String data) {
         this.data = data;
         this.neighbourList = new ArrayList<>();
     }
 
-    public int getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(int data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -49,6 +49,6 @@ public class Vertex {
 
     @Override
     public String toString() {
-        return "" + this.data;
+        return this.data;
     }
 }
